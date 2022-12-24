@@ -105,21 +105,21 @@
       args:
         executable: /bin/bash
 
-    - name: Install Hakrawler 2.1
+    - name: Install Metabigor
       shell: |
-        wget -c https://github.com/hakluke/hakrawler/archive/refs/tags/2.1.tar.gz -O hakrawler.tar.gz
-        tar xzf hakrawler.tar.gz hakrawler
-        chmod +x hakrawler
-        mv hakrawler /usr/bin/
+        curl -s https://api.github.com/repos/j3ssie/metabigor/releases/latest | grep "browser_download_url.*linux_amd64.tar.gz" | cut -d : -f 2,3 | tr -d \" | wget -i -
+        tar xzf metabigor* metabigor
+        chmod +x metabigor
+        mv metabigor /usr/bin/
       args:
-        executable: /bin/bash  
+        executable: /bin/bash
 
     - name: Install GoSpider
       shell: |
-        curl -s https://api.github.com/repos/jaeles-project/gospider/releases/latest | grep "browser_download_url.*linux_amd64.tar.gz" | cut -d : -f 2,3 | tr -d \" | wget -i -
-        tar xzf gospider* gospider
-        chmod +x gospider
-        mv gospider /usr/bin/
+        curl -s https://api.github.com/repos/jaeles-project/gospider/releases/latest | grep "browser_download_url.*linux_x86_64.zip" | cut -d : -f 2,3 | tr -d \" | wget -i -
+        unzip gospider*
+        chmod +x ./gospider_v*/gospider
+        mv ./gospider_*/gospider /usr/bin/
       args:
         executable: /bin/bash
 
